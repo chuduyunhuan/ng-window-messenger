@@ -6,7 +6,12 @@ const MESSENGER_MSG_TYPE = 'WindowMessengerMessage';
 @Injectable()
 export class WindowMessengerService {
   constructor (private readonly winInstance: Window) {
-    winInstance.addEventListener('message', this.receiveMessage);
+    winInstance.addEventListener('message', (event: MessageEvent) => {
+      if (event.data && event.data['type'] === MESSENGER_MSG_TYPE) {
+        const message = event.data as Message;
+        this.messageReceive.next(message);
+      }
+    }, false);
   }
 
   private messageSend = new EventEmitter<Message>();
@@ -14,14 +19,6 @@ export class WindowMessengerService {
 
   private messageReceive = new EventEmitter<Message>();
   messageReceive$ = this.messageReceive.asObservable();
-
-
-  private receiveMessage (event: MessageEvent) {
-      if (event.data && event.data['type'] === MESSENGER_MSG_TYPE) {
-        const message = event.data as Message;
-        this.messageReceive.next(message);
-      }
-  }
 
   sendMessage (message: Message, id: string | null = null) {
 
