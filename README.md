@@ -1,8 +1,15 @@
+Installation
 
-1. Installing
-  
-  npm i ng-window-messenger -S
+    npm i ng-window-messenger -S
 
-2. How to use
+How to use
 
+    import { WindowMessengerService } from 'ng-window-messenger';
+    
+    msgService: WindowMessengerService;
+    
+    constructor () {
+        this.msgService = new WindowMessengerService(window);
+        this.msgService.sendMessage({ messageType: 'open', content: 'just a test'});
+    }
 
