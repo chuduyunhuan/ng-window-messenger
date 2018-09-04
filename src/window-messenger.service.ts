@@ -1,8 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { filter } from 'rxjs/operators';
 
-const uuidv1 = require('uuid/v1');
-
 const MESSENGER_MSG_TYPE = 'WindowMessengerMessage';
 
 @Injectable()
@@ -30,7 +28,7 @@ export class WindowMessengerService {
     const internalMessage = {
         type: MESSENGER_MSG_TYPE,
         ...message,
-        id: id || uuidv1(),
+        id: id || generateUuid(),
     };
 
     this.messageSend.next(internalMessage);
@@ -46,4 +44,12 @@ export interface Message {
   messageType: string;
   content: any;
   id?: string;
+}
+
+export function generateUuid () {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (char) => {
+      const random = Math.random() * 16 | 0;
+      const value = char === 'x' ? random : (random % 4 + 8);
+      return value.toString(16);
+  });
 }

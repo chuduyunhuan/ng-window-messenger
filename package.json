@@ -22,8 +22,5 @@
   "devDependencies": {
     "@angular/core": "^6.0.4",
     "rxjs": "^6.2.0"
-  },
-  "dependencies": {
-    "uuid": "^3.3.2"
   }
 }
