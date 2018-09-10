@@ -2,9 +2,12 @@
   "name": "ng-window-messenger",
   "version": "1.0.1",
   "description": "a communication service between iframe and parent window for angular4+",
-  "main": "index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./index.ts",
+    "prepublishOnly": "tsc -p ./ --outDir dist/"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,8 @@
   "homepage": "https://github.com/chuduyunhuan/ng-window-messenger#readme",
   "devDependencies": {
     "@angular/core": "^6.0.4",
-    "rxjs": "^6.2.0"
+    "rxjs": "^6.2.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
   }
 }

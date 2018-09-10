@@ -1,4 +1,7 @@
-**/node_modules
-dist
-.idea
-
+node_modules/
+.idea/
+typings/
+npm-debug.log
+dist/
+*.txt
+*.d.ts
