@@ -16,6 +16,9 @@
   "keywords": [
     "angular4"
   ],
+  "files": [
+    "dist"
+  ],
   "author": "chuduyunhuan",
   "license": "MIT",
   "bugs": {
